@@ -1,0 +1,459 @@
+@charset "utf-8";
+@font-face { font-family: 'KHNPHD'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KHNPHD.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+*, *::before, *::after {
+  box-sizing: border-box
+}
+
+html {
+  font-family:KHNPHD
+}
+
+.album-wrapper .cross-fade, .color-btn, .song-list, .tracklist-wrapper .album-closer, .tracklist-wrapper .back-to-tracklist {
+  cursor: pointer
+}
+
+.album-bg-white {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 9998
+}
+
+.album-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5% 10%;
+  width: 100%;
+  background: #fff;
+  z-index: 9999
+}
+
+.album-activated .album-wrapper {
+  display: none
+}
+
+.album-wrapper .lang, .album-wrapper .artist-logo, .album-wrapper .artist-title {
+  text-align: center;
+  width: 100%
+}
+
+.album-activated .lang {
+  display: none
+}
+
+.album-wrapper .artist-title {
+  height: 3.5rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #000;
+  font-family: UhBeeJjipungding
+}
+
+.album-wrapper .lang {
+  margin-bottom: 2rem
+}
+
+.album-wrapper .lang a {
+  display: inline-block;
+  box-shadow: inset 0 0 0 1px #000;
+  -webkit-box-shadow: inset 0 0 0 1px #000;
+  -moz-box-shadow: inset 0 0 0 1px #000;
+  border-radius: 20px;
+  color: #000;
+  padding: 5px 25px;
+  transition: .5s
+}
+
+.article a {
+  color: #000
+}
+
+.article a:hover {
+  color: #aaa
+}
+
+.album-wrapper .lang a:nth-child(2) {
+  margin: 0 5px
+}
+
+.album-wrapper .lang a:hover {
+  box-shadow: inset 0 0 0 1px #ff5fa2;
+  -webkit-box-shadow: inset 0 0 0 1px #ff5fa2;
+  -moz-box-shadow: inset 0 0 0 1px #ff5fa2;
+  color: #ff5fa2
+}
+
+.album-wrapper[data-lang=all] .lang a[data-lang=all], .album-wrapper[data-lang=jp] .lang a[data-lang=jp], .album-wrapper[data-lang=ko] .lang a[data-lang=ko] {
+  background-image: linear-gradient(to right, #ff5fa2, #fcc89b);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  box-shadow: none
+}
+
+.cross-fade::after, .cross-fade::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: #ff5fa2;
+  opacity: 0;
+  transition: .7s ease-in-out;
+  z-index: 1
+}
+
+.cross-fade:after {
+  top: 0;
+  left: 0;
+  -webkit-transform: skew(-45deg) translateX(-150%);
+  transform: skew(-45deg) translateX(-150%)
+}
+
+.cross-fade:before {
+  right: 0;
+  bottom: 0;
+  -webkit-transform: skew(-45deg) translateX(150%);
+  transform: skew(-45deg) translateX(150%)
+}
+
+.cross-fade.hover:after, .cross-fade:hover:after {
+  -webkit-transform: skew(-45deg) translateX(-50%);
+  transform: skew(-45deg) translateX(-50%);
+  opacity: .3
+}
+
+.cross-fade.hover:before, .cross-fade:hover:before {
+  -webkit-transform: skew(-45deg) translateX(50%);
+  transform: skew(-45deg) translateX(50%);
+  opacity: .5
+}
+
+.album-activated .album-wrapper .artist-title, .album-wrapper[data-lang=jp] .cross-fade[data-lang=ko], .album-wrapper[data-lang=ko] .cross-fade[data-lang=jp] {
+  display: none
+}
+
+.album-wrapper .cross-fade {
+  position: relative;
+  overflow: hidden;
+  width: 30%;
+  margin-bottom: 5%;
+  padding-bottom: 30%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.album-column {
+  width: 30%
+}
+
+.album-wrapper .cross-fade>.album-title {
+  letter-spacing: 4px
+}
+
+.album-wrapper .cross-fade>.album-title, .album-wrapper .cross-fade>.release-date {
+  visibility: hidden;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  opacity: 0;
+  color: #fff;
+  transition: .5s;
+  z-index: 2
+}
+
+.album-wrapper .cross-fade>.release-date {
+  align-items: flex-end
+}
+
+.album-wrapper .cross-fade:hover>.album-title, .album-wrapper .cross-fade:hover>.release-date {
+  letter-spacing: initial;
+  visibility: visible;
+  opacity: 1
+}
+
+.arrow::before, .arrow::after {
+  content: '';
+  border-color: transparent;
+  border-style: solid;
+}
+
+.arrow::after {
+  border: none;
+  background-color: #fff;
+  height: 15%;
+  width: 25%;
+}
+.arrow::before {
+  margin-left: -25%;
+  border-width: 10px;
+  border-right-color: #fff;
+}
+
+.tracklist-wrapper {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5%;
+  padding-bottom: 100px;
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  z-index: 10000
+}
+
+.tracklist-wrapper .album-closer, .tracklist-wrapper .back-to-tracklist {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: #aaa;
+  border-radius: 50%;
+  z-index: 10010
+}
+
+.tracklist-wrapper .back-to-tracklist, .tracklist-wrapper.lyric-activated .album-closer {
+  display: none
+}
+
+.tracklist-wrapper.lyric-activated .back-to-tracklist {
+  display: flex
+}
+
+.tracklist-wrapper .album-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  filter: blur(40px);
+  opacity: .65;
+  z-index: 10000
+}
+
+.tracklist-wrapper .album-art {
+  position: fixed;
+  width: 30%;
+  z-index: 10005
+}
+
+.tracklist-wrapper .song-title {
+  font-size: 1.5rem
+}
+
+.tracklist-wrapper .song-artist {
+  margin: 10px 0
+}
+
+.tracklist-wrapper .detail {
+  position: relative;
+  margin-left: 35%;
+  z-index: 10005
+}
+
+.tracklist-wrapper .detail-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px
+}
+
+.tracklist-wrapper .detail p, .tracklist-wrapper .song-list {
+  line-height: 2.5
+}
+
+.album-art-img {
+  max-width: 100%
+}
+
+.tracklist-wrapper .lyrics {
+  display: none
+}
+
+.album-gutter {
+  width: 5%
+}
+
+@media screen and (max-width:860px) {
+  .album-wrapper .cross-fade {
+    width: 47.5%;
+    padding-bottom: 47.5%
+  }
+
+  .album-column {
+    width: 47.5%
+  }
+}
+
+@media screen and (max-width:480px) {
+  .tracklist-wrapper .detail {
+    margin-left: 0
+  }
+
+  .tracklist-wrapper .album-art {
+    position: relative;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto 15px
+  }
+
+  .album-wrapper .cross-fade {
+    width: 100%;
+    padding-bottom: 100%
+  }
+
+  .album-gutter {
+    width: 0
+  }
+
+  .album-column {
+    width: 80%
+  }
+}
+
+.song-info a {
+  color: #fff
+}
+
+.song-info a:hover {
+  color: #666
+}
+
+.video-popup.reveal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10020
+}
+
+.video-popup .video-wrapper {
+  position: relative;
+  width: 80%;
+  padding-bottom: 45%;
+  z-index: 10021
+}
+
+.video-popup .video-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%
+}
+
+.video-popup.reveal .video-popup-closer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .5);
+  z-index: 10020
+}
+
+.icon-home {
+  position: absolute;
+  top: 10px;
+  left: 10px
+}
+
+/* 컬러 코드 가사 */
+.member-colors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: fixed;
+  bottom: 10px;
+  right: 60px;
+  padding: 0 10px;
+  background: rgba(0, 0, 0, .5);
+  border-radius: 50px;
+  visibility: hidden;
+  opacity: 0;
+  transition: .5s;
+  z-index: 10010
+}
+
+.color .member-colors.reveal {
+  opacity: 1;
+  visibility: visible
+}
+
+.member-colors div {
+  margin: 0 2.5px;
+  line-height: 40px;
+  font-size: 12px
+}
+
+.color-btn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: #aaa;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 50%;
+  z-index: 10010;
+  transition: .5s
+}
+
+.color-btn.reveal {
+  visibility: visible;
+  opacity: 1
+}
+
+.color .color-btn {
+  background-image: linear-gradient(to top right, #ff5fa2, #fcc89b)
+}
+
+.tracklist-wrapper .detail p, .tracklist-wrapper .detail span {
+  transition: color .5s
+}
+
+.color .member1, .member-colors .member1 {
+  color: #49c0ec
+}
+
+.color .member2, .member-colors .member2 {
+  color: #ff6
+}
+
+.color .member3, .member-colors .member3 {
+  color: #ff66a3
+}
+
+/* 둘이 같이 부른 가사 */
+.color .member1.member2 {
+  background: -webkit-linear-gradient(top, #49c0ec 0, #49c0ec 49%, #ff6 50%, #ff6 100%);
+  background: -moz-linear-gradient(to bottom, #49c0ec 0, #49c0ec 49%, #ff6 50%, #ff6 100%);
+  background: -o-linear-gradient(to bottom, #49c0ec 0, #49c0ec 49%, #ff6 50%, #ff6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}

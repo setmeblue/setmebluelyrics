@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>가사집</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- 비디오 팝업 레이어 -->
+  <div class="video-popup">
+    <div class="video-popup-closer"></div>
+  </div>
+
+  <!-- 컬러 코드가 필요하지 않으면 삭제 -->
+  <div class="member-colors">
+    <div class="member1">멤버1</div>
+    <div class="member2">멤버2</div>
+    <div class="member3">멤버3</div>
+  </div>
+  <div class="color-btn">C</div>
+
+  <!-- 첫 화면 -->
+  <div class="album-wrapper" data-lang="all">
+
+    <!-- 로고 -->
+    <div class="artist-logo">
+      <img src="로고 이미지 경로" alt="logo">
+    </div>
+
+    <div class="artist-title">Discography</div>
+
+    <!-- 언어 목록 // 필요 없으면 .album-wrapper와 .cross-fade의 data-lang과 함께 삭제 -->
+    <div class="lang">
+      <a data-lang="all">All</a>
+      <a data-lang="ko">KO</a>
+      <a data-lang="jp">JP</a>
+    </div>
+
+    <!-- 앨범 목록 -->
+    <div class="album-list">
+      <div class="album-gutter"></div>
+      <div class="album-column"></div>
+
+      <!-- 앨범 -->
+      <div class="cross-fade" data-album="앨범이름(알아보기 쉽게)" style="background-image:url('앨범 이미지 경로')" data-lang="언어(ko 또는 jp)">
+        <div class="album-title">앨범 이름</div>
+        <div class="release-date">발매 일자</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 앨범 상세 설명 및 가사집 -->
+  <div class="tracklist-wrapper 앨범이름(알아보기 쉽게)">
+    <div class="album-closer">&#x2716;</div>
+    <div class="back-to-tracklist arrow"></div>
+    <div class="album-bg"></div>
+    <div class="album-art">
+      <img src="앨범 이미지 경로" alt="" class="album-art-img">
+      <div class="song-info">
+        <div class="song-title"></div>
+        <div class="song-artist">가수</div>
+        <div class="song-album">앨범 이름</div>
+      </div>
+    </div>
+    <div class="detail">
+      <div class="tracklist">
+        <div class="detail-title">Tracklist</div>
+        <div class="song-list" data-video="뮤비 비디오 ID(없으면 삭제)">노래 제목</div>
+        <div class="song-list">노래 제목</div>
+      </div>
+    </div>
+    <div class="lyrics">
+      <div class="lyric" data-track="1">
+        <p>가사 입력</p>
+      </div>
+      <div class="lyric" data-track="2">
+        <p>가사 입력</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
